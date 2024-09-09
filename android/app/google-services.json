@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "43434605661",
+    "project_id": "pr-8-firebase-miner",
+    "storage_bucket": "pr-8-firebase-miner.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:43434605661:android:1a470b78a33348db1a21b4",
+        "android_client_info": {
+          "package_name": "com.example.pr_8_chatting_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9oyrKXKBuf3sM7Aj8qj-34KhGzKCHn0A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
