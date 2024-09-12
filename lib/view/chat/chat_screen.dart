@@ -158,66 +158,62 @@ class ChatScreen extends StatelessWidget {
                                   children: [
                                     GestureDetector(
                                       onLongPress: () {
-                                        showBottomSheet(
-                                          context: context, builder: (context) {
-                                          return Text('');
-                                        },);
-                                        // if (chatList[index].sender ==
-                                        //     GoogleSignInServices.googleSignInServices.currentUser()!.email) {
-                                        //         controller.txtEditMsg = TextEditingController(
-                                        //     text: chatList[index].msg,
-                                        //   );
-                                        //
-                                        //   showDialog(
-                                        //     context: context,
-                                        //     builder: (context) {
-                                        //       return AlertDialog(
-                                        //         title: const Text('Edit'),
-                                        //         content: TextField(
-                                        //           controller:
-                                        //               controller.txtEditMsg,
-                                        //         ),
-                                        //         actions: [
-                                        //           TextButton(
-                                        //             onPressed: () {
-                                        //               ChatServices.chatServices
-                                        //                   .editMsg(
-                                        //                       sender:
-                                        //                           controller
-                                        //                               .email
-                                        //                               .value,
-                                        //                       receiver: controller
-                                        //                           .receiverEmail
-                                        //                           .value,
-                                        //                       chatId:
-                                        //                           chatId[index],
-                                        //                       msg: controller
-                                        //                           .txtEditMsg
-                                        //                           .text);
-                                        //               Get.back();
-                                        //             },
-                                        //             child: const Text('Edit'),
-                                        //           ),
-                                        //           TextButton(
-                                        //             onPressed: () {
-                                        //               ChatServices.chatServices
-                                        //                   .deleteMsg(
-                                        //                 sender: controller
-                                        //                     .email.value,
-                                        //                 receiver: controller
-                                        //                     .receiverEmail
-                                        //                     .value,
-                                        //                 chatId: chatId[index],
-                                        //               );
-                                        //               Get.back();
-                                        //             },
-                                        //             child: const Text('Delete'),
-                                        //           ),
-                                        //         ],
-                                        //       );
-                                        //     },
-                                        //   );
-                                        // }
+                                        if (chatList[index].sender ==
+                                            GoogleSignInServices.googleSignInServices.currentUser()!.email) {
+                                                controller.txtEditMsg = TextEditingController(
+                                            text: chatList[index].msg,
+                                          );
+
+                                          showDialog(
+                                            context: context,
+                                            builder: (context) {
+                                              return AlertDialog(
+                                                title: const Text('Edit'),
+                                                content: TextField(
+                                                  controller:
+                                                      controller.txtEditMsg,
+                                                ),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () {
+                                                      ChatServices.chatServices
+                                                          .editMsg(
+                                                              sender:
+                                                                  controller
+                                                                      .email
+                                                                      .value,
+                                                              receiver: controller
+                                                                  .receiverEmail
+                                                                  .value,
+                                                              chatId:
+                                                                  chatId[index],
+                                                              msg: controller
+                                                                  .txtEditMsg
+                                                                  .text);
+                                                      Get.back();
+                                                    },
+                                                    child: const Text('Edit'),
+                                                  ),
+                                                  TextButton(
+                                                    onPressed: () {
+                                                      ChatServices.chatServices
+                                                          .deleteMsg(
+                                                        sender: controller
+                                                            .email.value,
+                                                        receiver: controller
+                                                            .receiverEmail
+                                                            .value,
+                                                        chatId: chatId[index],
+                                                      );
+                                                      Get.back();
+                                                    },
+                                                    child: const Text('Delete'),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          );
+                                        }
                                       },
                                       child: Card(
                                         color: isCurrentUser

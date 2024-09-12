@@ -68,12 +68,14 @@ class LoginScreen extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () async {
+                        String? deviceToken = await FirebaseNotificationServices.firebaseNotificationServices.generateDeviceToken();
                         String status = await GoogleSignInServices.googleSignInServices.signInWithGoogle(context);
                         User? user = GoogleSignInServices.googleSignInServices.currentUser();
                         Map m1 = {
                           'name': user!.displayName,
                           'email': user.email,
                           'photoUrl': user.photoURL,
+                          'token' : deviceToken,
                         };
                         UserModel userModel = UserModel.fromMap(m1);
                         await UserServices.userServices.addUser(userModel);

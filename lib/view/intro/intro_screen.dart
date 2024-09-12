@@ -5,6 +5,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pr_8_chatting_app/controller/auth_controller.dart';
+import 'package:pr_8_chatting_app/helper/firebase_notification_services.dart';
 import 'package:pr_8_chatting_app/helper/google_services.dart';
 import 'package:pr_8_chatting_app/helper/user_services.dart';
 import 'package:pr_8_chatting_app/model/user_model.dart';
@@ -105,11 +106,14 @@ class IntroScreen extends StatelessWidget {
                     // Close the progress bar dialog
                     Navigator.of(context).pop();
 
+                    String? deviceToken = await FirebaseNotificationServices.firebaseNotificationServices.generateDeviceToken();
+
                     User? user = GoogleSignInServices.googleSignInServices.currentUser();
                     Map m1 = {
                       'name': user!.displayName,
                       'email': user.email,
                       'photoUrl': user.photoURL,
+                      'token' : deviceToken,
                     };
                     UserModel userModel = UserModel.fromMap(m1);
                     await UserServices.userServices.addUser(userModel);

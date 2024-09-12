@@ -34,7 +34,7 @@ class ChatApp extends StatelessWidget {
         title: 'Messaging - Chatbox',
         theme: themeController.theme,
         debugShowCheckedModeBanner: false,
-        home: GoogleSignInServices.googleSignInServices.currentUser() == null ? const IntroScreen() : HomeScreen(),
+        home:  IntroScreen(),
       ),
     );
   }
