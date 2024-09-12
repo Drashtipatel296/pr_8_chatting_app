@@ -90,6 +90,9 @@ Include some screenshots or a demo GIF here to showcase the app.
   <img src='https://github.com/user-attachments/assets/77a742b3-9d70-4a70-a471-ca1ca59eea4c' width=240> &nbsp;&nbsp;&nbsp;&nbsp;
 </p>
 
+### Video:
+
+https://github.com/user-attachments/assets/70b5aba6-7440-4edc-92be-fc736b9983e3
 
 
 
