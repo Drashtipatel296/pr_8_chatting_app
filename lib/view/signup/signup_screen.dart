@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pr_8_chatting_app/controller/auth_controller.dart';
+import 'package:pr_8_chatting_app/helper/firebase_notification_services.dart';
 import 'package:pr_8_chatting_app/helper/user_services.dart';
 import 'package:pr_8_chatting_app/model/user_model.dart';
 import 'package:pr_8_chatting_app/view/widgets/textfield_screen.dart';
@@ -77,15 +78,20 @@ class SignupScreen extends StatelessWidget {
                   height: 120,
                 ),
                 GestureDetector(
-                  onTap: () {
+                  onTap: () async {
+
+                    String? deviceToken = await FirebaseNotificationServices.firebaseNotificationServices.generateDeviceToken();
+
                     Map m1 = {
                       'name' : controller.txtName.text,
                       'email' : controller.txtEmail.text,
                       'photoUrl' : 'https://www.robertlowdon.com/wp-content/uploads/2022/06/toronto-headshot.webp',
+                      'token' : deviceToken,
                     };
                     UserModel userModel = UserModel.fromMap(m1);
                     UserServices.userServices.addUser(userModel);
                     controller.signUpMethod(controller.txtEmail.text, controller.txtPassword.text);
+
                     controller.txtEmail.clear();
                     controller.txtPassword.clear();
                     controller.txtName.clear();

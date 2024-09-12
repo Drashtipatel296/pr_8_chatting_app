@@ -1,13 +1,15 @@
-
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-
+import 'package:get/get.dart';
+import 'package:pr_8_chatting_app/controller/auth_controller.dart';
 class ChatServices{
   static ChatServices chatServices = ChatServices._();
   ChatServices._();
 
   FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+  AuthController controller = Get.find();
 
   Future<void> insertChat(Map<String, dynamic> chat, String sender, String receiver) async {
     List doc = [sender, receiver];
@@ -64,8 +66,8 @@ class ChatServices{
     });
   }
 
-  Stream<QuerySnapshot<Map<String, dynamic>>> getLastMsg(String receiver, String sender)  {
-    List doc = [sender, receiver];
+  Stream<QuerySnapshot<Map<String, dynamic>>> getLastMsg(String receiver)  {
+    List doc = [controller.currentLogin.value, receiver];
     doc.sort();
     String docId = doc.join('-');
     return firestore

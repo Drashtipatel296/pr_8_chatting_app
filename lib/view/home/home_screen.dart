@@ -24,7 +24,7 @@ class HomeScreen extends StatelessWidget {
         leading: Padding(
           padding: const EdgeInsets.only(left: 15),
           child: Obx(
-            () => Container(
+                () => Container(
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 border: Border.all(color: const Color(0xffA8B0AF), width: 1),
@@ -72,7 +72,7 @@ class HomeScreen extends StatelessWidget {
                 Get.to(const ProfileScreen());
               },
               child: Obx(
-                () => Container(
+                    () => Container(
                   height: 40,
                   width: 40,
                   decoration: BoxDecoration(
@@ -109,7 +109,7 @@ class HomeScreen extends StatelessWidget {
                         child: CircleAvatar(
                           radius: 35,
                           backgroundImage:
-                              AssetImage(statusData[index]["image"]!),
+                          AssetImage(statusData[index]["image"]!),
                         ),
                       ),
                       const SizedBox(height: 5),
@@ -125,7 +125,7 @@ class HomeScreen extends StatelessWidget {
           ),
           Expanded(
             child: Obx(
-              () => Container(
+                  () => Container(
                 decoration: BoxDecoration(
                   color: themeController.containerColor,
                   borderRadius: BorderRadius.only(
@@ -148,21 +148,21 @@ class HomeScreen extends StatelessWidget {
                       height: 10,
                     ),
                     StreamBuilder(
-                      stream: UserServices.userServices.getUser(),
-                      builder: (context, snapshot) {
-                        if (snapshot.hasError) {
-                          return Center(
-                            child: Text('Error: ${snapshot.error}'),
-                          );
-                        }
+                        stream: UserServices.userServices.getUser(),
+                        builder: (context, snapshot) {
+                          if (snapshot.hasError) {
+                            return Center(
+                              child: Text('Error: ${snapshot.error}'),
+                            );
+                          }
 
-                        if (snapshot.connectionState == ConnectionState.waiting) {
-                          return const Center(
-                            child: CircularProgressIndicator(),
-                          );
-                        }
+                          if (snapshot.connectionState == ConnectionState.waiting) {
+                            return const Center(
+                              child: CircularProgressIndicator(),
+                            );
+                          }
 
-                        if(snapshot.hasData){
+                          if(snapshot.hasData){
                             List userList = snapshot.data!.docs.map((e) => e.data(),).toList();
                             return Expanded(
                               child: ListView.builder(
@@ -175,10 +175,9 @@ class HomeScreen extends StatelessWidget {
                                         userList[index]['email'],
                                         userList[index]['name'],
                                         userList[index]['photoUrl'],
+                                        userList[index]['token'],
                                       );
-                                      Get.to(
-                                        ChatScreen(),
-                                      );
+                                      Get.to(ChatScreen(),);
                                     },
                                     child: ListTile(
                                       leading: CircleAvatar(

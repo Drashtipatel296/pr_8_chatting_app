@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:pr_8_chatting_app/helper/firebase_notification_services.dart';
 import 'package:pr_8_chatting_app/helper/google_services.dart';
 import 'package:pr_8_chatting_app/model/user_model.dart';
 
@@ -22,5 +23,11 @@ class UserServices{
   Future<DocumentSnapshot<Object?>> getCurrentUser(User user){
     final CollectionReference collectionReference = firebaseFirestore.collection("users");
     return collectionReference.doc(user.email).get();
+  }
+
+  Future<void> updateUserToken() async {
+    String? token = await FirebaseNotificationServices.firebaseNotificationServices.generateDeviceToken();
+    User? user = GoogleSignInServices.googleSignInServices.currentUser();
+    firebaseFirestore.collection("users").doc(user!.email).update({'token' : token});
   }
 }

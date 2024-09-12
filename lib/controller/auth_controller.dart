@@ -6,7 +6,6 @@ import 'package:pr_8_chatting_app/helper/auth_services.dart';
 import 'package:pr_8_chatting_app/helper/chat_services.dart';
 import 'package:pr_8_chatting_app/helper/google_services.dart';
 import 'package:pr_8_chatting_app/helper/media_services.dart';
-import 'package:pr_8_chatting_app/model/user_model.dart';
 import 'package:pr_8_chatting_app/view/home/home_screen.dart';
 
 class AuthController extends GetxController {
@@ -25,6 +24,7 @@ class AuthController extends GetxController {
   RxString currentLogin=''.obs;
   RxString callId =''.obs;
   RxString receiverImageUrl = "".obs;
+  RxString receiverToken = "".obs;
 
   @override
   void onInit() {
@@ -32,10 +32,11 @@ class AuthController extends GetxController {
     getUserDetailes();
   }
 
-  void getReceiver(String email, String name, String url){
+  void getReceiver(String email, String name, String url, String token){
     receiverEmail.value = email;
     receiverName.value = name;
     receiverImageUrl.value = url;
+    receiverToken.value = token;
     update();
   }
 
